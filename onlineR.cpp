@@ -7,6 +7,7 @@
 //
 
 #include "onlineR.hpp"
+<<<<<<< HEAD
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
@@ -90,3 +91,5 @@ int createSock()
 
 
 
+=======
+>>>>>>> be16ae821fd2f9c68224906df47a4579447c14d2
