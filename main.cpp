@@ -18,6 +18,7 @@
 #include "snape_and_ladder.hpp"
 #include "playground.hpp"
 #include "servant.hpp"
+#include "onlineR.hpp"
 
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -63,6 +64,9 @@ int main(int argc, const char * argv[]) {
     
     std::cout << returnVal;
    // freeaddrinfo(servinfo);*/
+   int x = createSock();
+    std::cout << x;
+    beginTalking(x);
     
     return 0;
 }

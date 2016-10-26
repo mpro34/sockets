@@ -11,4 +11,8 @@
 
 #include <stdio.h>
 
+int createSock();
+void beginTalking(int connection_id);
+
+
 #endif /* onlineR_hpp */
