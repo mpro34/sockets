@@ -28,6 +28,7 @@ int main(int argc, const char * argv[]) {
     //wait_for_fortytwo(); // codechef #1
     //performTransaction(); // codechef #2
    // ladderSize(); // codechef #3
+    std::cout << "hello, world!";
    // runServant(); // codechef #4
   //  playground_code();
   /*  std::string input;

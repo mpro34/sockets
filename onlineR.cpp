@@ -7,5 +7,3 @@
 //
 
 #include "onlineR.hpp"
-
-

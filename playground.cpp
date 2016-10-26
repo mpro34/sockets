@@ -23,12 +23,12 @@ void playground_code()
 {
 //typedef typename-
 typedef int int_32;
-int_32 x = 5;
+//int_32 x = 5;
 //std::cout << x+1 << '\n';
 //typedef type------------------------- name-
 typedef enum { red=20, green, blue, hi } Color;
-Color b = static_cast<Color>(3);  //type casts the int 3 to type "color" and forces it with "static_cast"
-Color c = red;
+//Color b = static_cast<Color>(3);  //type casts the int 3 to type "color" and forces it with "static_cast"
+//Color c = red;
 //std::cout << b+1 << '\n';
 //std::cout << c << '\n';
 std::string data;
@@ -42,9 +42,9 @@ std::string data;
     return size*nmemb;
 };*/
     
-CURLcode res;
-CURL *curl;
-struct curl_slist *list = NULL;
+//CURLcode res;
+//CURL *curl;
+/*struct curl_slist *list = NULL;
 curl = curl_easy_init();
 if(curl)
 {
@@ -66,5 +66,5 @@ if(curl)
     }
     curl_easy_cleanup(curl);
 }
-//std::cout << res;
+//std::cout << res;*/
 }
