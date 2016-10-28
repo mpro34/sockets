@@ -65,9 +65,17 @@ int main(int argc, const char * argv[]) {
     
     std::cout << returnVal;
    // freeaddrinfo(servinfo);*/
-   int x = createSock();
+    int x = createSock();
+    char buf[255];
     std::cout << x;
     beginTalking(x);
+  //  say_out(x, "Is this oscar?!");
+    read_in(x, buf, sizeof(buf));
+    if (strncasecmp("hello", buf, 5))
+        say_out(x, "Hello Chris, Welcome to the Knock server!\r\n");
+    else {
+        say_out(x, "Not recognized command!\r\n");
+    }
     
     return 0;
 }

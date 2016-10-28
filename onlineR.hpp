@@ -13,6 +13,8 @@
 
 int createSock();
 void beginTalking(int connection_id);
+int read_in(int socket, char *b, int l);
+int say_out(int socket, char *s);
 
 
 #endif /* onlineR_hpp */

@@ -31,6 +31,32 @@ void beginTalking(int connection_id)
     }
 }
 
+int read_in(int socket, char *buf, int len)
+{
+    char *s = buf;
+    int slen = len;
+    int c = recv(socket, s, slen, 0);
+    while ((c > 0) && (s[c-1] != '\n')) {
+        s += c; slen -= c;
+        c = recv(socket, s, slen, 0);
+    }
+    if (c < 0)
+        return c;
+    else if (c == 0)
+        buf[0] = '\0';
+    else
+        s[c-1]='\0';
+    return len - slen;
+}
+
+int say_out(int socket, char *s)
+{
+    int result = send(socket, s, strlen(s), 0);
+    if (result == -1)
+        fprintf(stderr, "%s: %s\n", "Error talking to the client", strerror(errno));
+    return result;
+}
+
 /* B.L.A.B = Bind to a port, Listen, Accept a connection, Begin talking */
 int createSock()
 {
@@ -66,11 +92,13 @@ int createSock()
     puts("Waiting for connection");
     
 //Server will use connect_d to ACCEPT a connection and BEGIN Talking.
-    while (1)
-    {
+  //  while (1)
+  //  {
     struct sockaddr_storage client_addr;    //Will store details about the client who's just connected.
     unsigned int address_size = sizeof(client_addr);
-
+    char buf[255];
+    while(1) {
+        
     int connect_d = accept(listener_d, (struct sockaddr *) &client_addr, &address_size);
     if (connect_d == -1)
     {
@@ -79,8 +107,17 @@ int createSock()
     }
         beginTalking(connect_d);
        // close(connect_d);
+        read_in(connect_d, buf, sizeof(buf));
+        std::cout << buf;
+        if (strncmp("hello", buf, 255))
+            say_out(connect_d, "Hello Chris, Welcome to the Knock server!\r\n");
+        else {
+            say_out(connect_d, "Not recognized command!\r\n");
+        }
+        shutdown(connect_d, 2);
     }
-    
+
+
     
     
     return 0;
